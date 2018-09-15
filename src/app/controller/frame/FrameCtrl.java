@@ -3,6 +3,8 @@ package app.controller.frame;
 import app.service.platter.model.GenericController;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 
@@ -23,6 +25,15 @@ public class FrameCtrl extends GenericController
 
 	@FXML
 	private TextField inputField;
+
+	@FXML
+	private Button listNav;
+
+	@FXML
+	private Button movingTargetNav;
+
+	@FXML
+	private ScrollPane footer;
 
 	@FXML
 	void initialize() {
@@ -68,5 +79,29 @@ public class FrameCtrl extends GenericController
 
 	public void setInputField(TextField inputField) {
 		this.inputField = inputField;
+	}
+
+	public Button getListNav() {
+		return listNav;
+	}
+
+	public void setListNav(Button listNav) {
+		this.listNav = listNav;
+	}
+
+	public Button getMovingTargetNav() {
+		return movingTargetNav;
+	}
+
+	public void setMovingTargetNav(Button movingTargetNav) {
+		this.movingTargetNav = movingTargetNav;
+	}
+
+	public ScrollPane getFooter() {
+		return footer;
+	}
+
+	public void setFooter(ScrollPane footer) {
+		this.footer = footer;
 	}
 }

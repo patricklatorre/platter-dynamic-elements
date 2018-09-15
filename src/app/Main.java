@@ -9,7 +9,9 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-		new DynamicExample().serve();
+		Platter app = new DynamicExample();
+
+		app.serve();
     }
 
     public static void main(String[] args) {

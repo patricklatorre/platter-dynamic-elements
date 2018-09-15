@@ -1,5 +1,6 @@
 package app.platter;
 
+import app.view.dynamics.DynamicFieldList;
 import app.view.dynamics.DynamicList;
 import app.controller.frame.FrameCtrl;
 import app.service.platter.model.Platter;
@@ -10,6 +11,7 @@ public class DynamicExample extends Platter
 {
 	private Section frame;
 	private Section listSection;
+	private Section movingTargetSection;
 
 	@Override
 	public void loadSections() {
@@ -19,6 +21,9 @@ public class DynamicExample extends Platter
 
 		listSection = Section.create()
 				.fromFXML("/app/view/dynamics/dynamicList.fxml");
+
+		movingTargetSection = Section.create()
+				.fromFXML("/app/view/dynamics/dynamicFieldList.fxml");
 	}
 
 	@Override
@@ -30,6 +35,8 @@ public class DynamicExample extends Platter
 	public void configure() {
 		cfg
 				.setFirstScreen(frame.getInternalScreen());
+
+		mainWindow.setResizable(true);
 	}
 
 	@Override
@@ -37,12 +44,26 @@ public class DynamicExample extends Platter
 		// Get controllers
 		FrameCtrl frameCtrl = (FrameCtrl) frame.getController();
 		DynamicList dynamicList = (DynamicList) listSection.getController();
+		DynamicFieldList dynamicFieldList = (DynamicFieldList) movingTargetSection.getController();
 
 		// Scroll to bottom at start
 		dynamicList.getScroll().vvalueProperty().bind(dynamicList.getFeedBox().heightProperty());
+		dynamicFieldList.getScroll().vvalueProperty().bind(dynamicFieldList.getFeedBox().heightProperty());
 
 		// Set list as default section
 		frameCtrl.show(listSection.getLayout());
+
+
+		// Handle nav buttons
+		frameCtrl.getListNav().setOnAction(e -> {
+			frameCtrl.show(listSection.getLayout());
+			frameCtrl.getFooter().setVisible(true);
+		});
+		frameCtrl.getMovingTargetNav().setOnAction(e -> {
+			frameCtrl.show(movingTargetSection.getLayout());
+			frameCtrl.getFooter().setVisible(false);
+		});
+
 
 		// Enter key as submit
 		frameCtrl.getInputField().setOnKeyPressed((keyEvent) -> {
