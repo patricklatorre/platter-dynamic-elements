@@ -1,0 +1,13 @@
+.row {
+    -fx-text-fill: #464646;
+}
+
+.row:hover {
+    -fx-background-color: #ffe1dd;
+}
+
+.prompt {
+    -fx-font-size: 10px;
+    -fx-text-fill: #e3e3e3;
+    -fx-font-style: italic;
+}
