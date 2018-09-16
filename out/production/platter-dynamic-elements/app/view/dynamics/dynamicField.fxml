@@ -14,7 +14,7 @@
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <TextField fx:id="textField" promptText="click to add" style="-fx-background-color: none; -fx-text-fill: gray;" styleClass="inputField">
+      <TextField fx:id="textField" promptText="click to add" styleClass="inputField">
          <GridPane.margin>
             <Insets />
          </GridPane.margin></TextField>

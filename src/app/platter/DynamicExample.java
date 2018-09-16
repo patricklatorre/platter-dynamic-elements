@@ -51,15 +51,20 @@ public class DynamicExample extends Platter
 		dynamicFieldList.getScroll().vvalueProperty().bind(dynamicFieldList.getFeedBox().heightProperty());
 
 		// Set list as default section
+		frameCtrl.getListNav().getStyleClass().add("navCurrent");
 		frameCtrl.show(listSection.getLayout());
 
 
 		// Handle nav buttons
 		frameCtrl.getListNav().setOnAction(e -> {
+			frameCtrl.getListNav().getStyleClass().add("navCurrent");
+			frameCtrl.getMovingTargetNav().getStyleClass().remove("navCurrent");
 			frameCtrl.show(listSection.getLayout());
 			frameCtrl.getFooter().setVisible(true);
 		});
 		frameCtrl.getMovingTargetNav().setOnAction(e -> {
+			frameCtrl.getListNav().getStyleClass().remove("navCurrent");
+			frameCtrl.getMovingTargetNav().getStyleClass().add("navCurrent");
 			frameCtrl.show(movingTargetSection.getLayout());
 			frameCtrl.getFooter().setVisible(false);
 		});
@@ -73,6 +78,4 @@ public class DynamicExample extends Platter
 			}
 		});
 	}
-
-
 }
